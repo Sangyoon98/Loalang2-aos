@@ -55,8 +55,11 @@ fun Loalang2Theme(
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
-            (view.context as Activity).window.statusBarColor = colorScheme.primary.toArgb()
-            ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = darkTheme
+            //WindowCompat.setDecorFitsSystemWindows((view.context as Activity).window, false)
+            (view.context as Activity).window.statusBarColor = colorScheme.inverseOnSurface.toArgb()
+            (view.context as Activity).window.navigationBarColor = colorScheme.inverseOnSurface.toArgb()
+            ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = !darkTheme
+            ViewCompat.getWindowInsetsController(view)?.isAppearanceLightNavigationBars = !darkTheme
         }
     }
 
