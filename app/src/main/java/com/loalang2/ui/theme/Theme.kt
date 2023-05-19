@@ -2,6 +2,8 @@ package com.loalang2.ui.theme
 
 import android.app.Activity
 import android.os.Build
+import androidx.compose.animation.rememberSplineBasedDecay
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -10,10 +12,12 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -56,6 +60,7 @@ fun Loalang2Theme(
     if (!view.isInEditMode) {
         SideEffect {
             //WindowCompat.setDecorFitsSystemWindows((view.context as Activity).window, false)
+            //(view.context as Activity).window.statusBarColor = Color.Transparent.toArgb()
             (view.context as Activity).window.statusBarColor = colorScheme.inverseOnSurface.toArgb()
             (view.context as Activity).window.navigationBarColor = colorScheme.inverseOnSurface.toArgb()
             ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = !darkTheme
