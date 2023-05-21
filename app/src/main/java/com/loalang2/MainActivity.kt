@@ -56,14 +56,15 @@ fun DefaultPreview() {
 @ExperimentalMaterial3Api
 @Composable
 fun Greeting() {
-    Column {
-        Screen1()
-    }
-    Box(
-        contentAlignment = Alignment.BottomCenter
-    ) {
-        BottomNavMenu()
-    }
+    Scaffold (
+        content = { padding ->
+            Column(
+                modifier = Modifier.padding(padding)
+            ) {
+                Screen1()
+            }},
+        bottomBar = { BottomNavMenu() }
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
